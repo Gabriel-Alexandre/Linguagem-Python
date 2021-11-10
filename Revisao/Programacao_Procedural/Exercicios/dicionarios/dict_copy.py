@@ -36,8 +36,11 @@ print(copyDictionary)
 lista = [1, 2, 3, 4]
 
 l = copy.deepcopy(lista) # Essa é a maneira correta de fazer uma copia de uma lista
+n = lista[:] # Essa é a maneira correta de fazer uma copia de uma lista
 
 l[0] = 'Um'
+n[0] = 'Dois'
 
 print(lista)
 print(l)
+print(n)
