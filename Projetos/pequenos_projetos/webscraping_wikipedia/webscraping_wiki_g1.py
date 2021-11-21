@@ -5,13 +5,17 @@ import requests
 from bs4 import BeautifulSoup
 
 #especifique o URL
-url = "https://ge.globo.com/futebol/brasileirao-serie-a/"
+url = "https://g1.globo.com/"
 
 r = requests.get(url)
 
 soup = BeautifulSoup(r.content, 'html.parser')
 
-result = soup.find('table', attrs={'class': "tabela__equipes tabela__equipes--com-borda"})
+result = soup.find_all('div', attrs={'class': "feed-post-body"})
 
-print(result)
+for v in result:    
+    # print(v.prettify())
+
+    titulo = v.find('a', attrs={'class': "feed-post-link"}).text
+    print(f"Titulo: {titulo}")
 
