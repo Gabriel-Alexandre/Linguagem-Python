@@ -1,0 +1,6 @@
+-> criar projeto: scrapy startproject (nome_projeto)
+-> criar novo spider: scrapy genspider (nome_spider) (domínio)
+-> executar no shell: scrapy shell (link)
+-> executar spider: scrapy crawl (nome_spider)
+-> executar spider: scrapy runspider (nome_spider).py
+-> executar spider gerando arquivo (csv/json/text/etc): scrapy runspider (nome_spider).py -o (nome_spider).(csv/json/text/etc)
