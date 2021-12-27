@@ -24,11 +24,11 @@ class CarsSpider(scrapy.Spider):
         )
 
         # Se ainda tiver página, fazer uma nova requisição.
-        if next_page:
-            self.log('Próxima Página: {}'.format(next_page.extract_first()))
-            yield scrapy.Request(
-                url=next_page.extract_first(), callback=self.parse
-            )
+        # if next_page:
+        #     self.log('Próxima Página: {}'.format(next_page.extract_first()))
+        #     yield scrapy.Request(
+        #         url=next_page.extract_first(), callback=self.parse
+        #     )
 
     def parse_detail(self, response):
         title = response.xpath('//h1/text()').extract_first()
