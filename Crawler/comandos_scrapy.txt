@@ -4,6 +4,7 @@
 -> executar spider: scrapy crawl (nome_spider)
 -> executar spider: scrapy runspider (nome_spider).py
 -> executar spider gerando arquivo (csv/json/text/etc): scrapy runspider (nome_spider).py -o (nome_spider).(csv/json/text/etc)
+-> executar spider passando atributos: scrapy crawl coursera -a (atributo)=(parâmetro a ser inserido)
 
 ** scrapy shell: **
 
