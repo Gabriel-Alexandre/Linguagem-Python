@@ -1,11 +1,7 @@
 import scrapy
 
-
 class CourseraSpider(scrapy.Spider):
-    # - O site foi atualizado, então o código precisa ser atualizado.
-    # - Porém, o código ainda é válido para aprender o conteúdo.
-
-    # exemplo de como passar o atributo na linha de comando:
+    # Exemplo de como passar o atributo na linha de comando:
     # - scrapy crawl coursera -a category=computer-science
 
     name = "coursera"
@@ -38,9 +34,8 @@ class CourseraSpider(scrapy.Spider):
                 callback=self.parse_category
             )
     
-    # Falta encontrar as categorias
     def parse_category(self, response):
-        courses = response.xpath("//a[contains(@class, 'rc-OfferingCard')]")
+        courses = response.xpath('//div[contains(@class, "slick-slide")]/div/div/div/div/a')
         for course in courses:
             course_url = course.xpath("./@href").extract_first()
             yield scrapy.Request(
@@ -50,5 +45,5 @@ class CourseraSpider(scrapy.Spider):
         
     def parse_course(self, response):
         yield {
-            'title': response.xpath("//title/text()").extract_first()
+            'title': response.xpath("//h1/text()").extract_first()
         }
