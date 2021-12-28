@@ -9,7 +9,9 @@ from itemadapter import ItemAdapter
 import sqlite3
 # -> O pipeline é utilizado principalmente para limpeza de dados e configuração do banco de dados.
 
-class OlxSqlitePipeline(object): # Cada classe representa 1 pipeline diferente.
+class OlxSqlitePipeline(object): 
+    # - Cada classe representa 1 pipeline diferente.
+    # - Essa classe representa 1 pipeline para o sqlite.
 
     # Executado depois que o spider gera um item (yield), recebendo esse item.
     def process_item(self, item, spider):
@@ -51,3 +53,44 @@ class OlxSqlitePipeline(object): # Cada classe representa 1 pipeline diferente.
     def close_spider(self, spider):
         # Fecha conexão com o banco.
         self.conn.close()
+
+'''class MongoPipeline(object):
+    # - Essa classe representa 1 pipeline para o mongodb (No sql).
+    # - Como não tenho o mongodb instalado, não ativei o pipeline em settings, mas as anotações de settings foram
+    # adicionadas.
+
+    # Nome da coleção.
+    collection_name = 'cars'
+
+    # Construtor da classe, executa sempre que a classe é iniciada.
+    def __init__(self, mongo_uri, mongo_db):
+        # mongo_uri e mongo_db - Essas informações estão em settings.
+
+        # Definindo url de conexão para o mongodb.
+        self.mongo_uri = mongo_uri
+        # Definindo nome do banco de dados.
+        self.mongo_db = mongo_db
+
+    # Não é acessível através da instância.
+    @classmethod
+    # Executa assim que o crawler for inicido.
+    def from_crawler(cls, crawler):
+        # Retorna a criação de um novo pipeline.
+        return cls(
+            mongo_uri=crawler.settings.get('MONGO_URI'),
+            mongo_db=crawler.settings.get('MONGO_DATABASE', 'items')
+        )
+
+    def open_spider(self, spider):
+        # Inicia banco de dados.
+        self.client = pymongo.MongoClient(self.mongo_uri)
+        self.db = self.client[self.mongo_db]
+
+    def close_spider(self, spider):
+        # Fecha banco de dados.
+        self.client.close()
+
+    def process_item(self, item, spider):
+        # Insere cada item na coleção de carros.
+        self.db[self.collection_name].insert(dict(item))
+        return item'''

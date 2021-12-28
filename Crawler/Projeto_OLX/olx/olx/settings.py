@@ -64,7 +64,10 @@ ROBOTSTXT_OBEY = True
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
+   # Pipeline - Sqlite
    'olx.pipelines.OlxSqlitePipeline': 300, # '(classe executada)' : (ordem a ser executada)
+   # Pipeline - Mongodb
+   # 'olx.pipelines.MongoPipeline': 300
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
@@ -87,3 +90,7 @@ ITEM_PIPELINES = {
 #HTTPCACHE_DIR = 'httpcache'
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
+
+# Configurações mongodb
+# MONGO_URI = "localhost"
+# MONGO_DATABASE = "olx"
