@@ -29,7 +29,7 @@ class CourseraSpider(scrapy.Spider):
 
     # Executa como callbak de start_requests.
     def parse(self, response):
-        categories = response.xpath("//div[contains(@class, 'rc-DomainNav')]/a")
+        categories = response.xpath('//div[contains(@class, "slick-slide")]/div/div/a')
         for cat in categories:
             cat_url = cat.xpath('./@href').extract_first()
             self.log('Category: %s' % cat_url)
@@ -38,6 +38,7 @@ class CourseraSpider(scrapy.Spider):
                 callback=self.parse_category
             )
     
+    # Falta encontrar as categorias
     def parse_category(self, response):
         courses = response.xpath("//a[contains(@class, 'rc-OfferingCard')]")
         for course in courses:
