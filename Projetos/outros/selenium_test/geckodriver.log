@@ -517,3 +517,31 @@ console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkErr
 
 ###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
 
+1640820023781	geckodriver	INFO	Listening on 127.0.0.1:38641
+1640820023788	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileZX482T"
+ATTENTION: default value of option mesa_glthread overridden by environment.
+ATTENTION: default value of option mesa_glthread overridden by environment.
+ATTENTION: default value of option mesa_glthread overridden by environment.
+ATTENTION: default value of option mesa_glthread overridden by environment.
+1640820024872	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileZX482T/search.json.mozlz4", (void 0)))
+1640820026670	Marionette	INFO	Listening on port 45515
+1640820026736	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1640820034321	Marionette	INFO	Stopped listening on port 45515
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1640820269703	geckodriver	INFO	Listening on 127.0.0.1:45555
+1640820269709	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofilegP7Ic4"
+ATTENTION: default value of option mesa_glthread overridden by environment.
+ATTENTION: default value of option mesa_glthread overridden by environment.
+ATTENTION: default value of option mesa_glthread overridden by environment.
+ATTENTION: default value of option mesa_glthread overridden by environment.
+1640820270811	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofilegP7Ic4/search.json.mozlz4", (void 0)))
+1640820272880	Marionette	INFO	Listening on port 38939
+1640820272952	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1640820279535	Marionette	INFO	Stopped listening on port 38939
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
