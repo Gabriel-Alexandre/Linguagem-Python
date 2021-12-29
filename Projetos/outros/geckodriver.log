@@ -512,3 +512,8 @@ console.warn: SearchSettings: "get: No settings file exists, new profile?" (new 
 1640814815917	Marionette	INFO	Stopped listening on port 43837
 console.log: WebExtensions: reset-default-search: starting.
 console.log: WebExtensions: reset-default-search: No addons in our list are installed.
+1640815015702	Marionette	INFO	Stopped listening on port 46121
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
