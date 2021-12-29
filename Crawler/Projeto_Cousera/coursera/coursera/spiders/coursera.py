@@ -1,4 +1,7 @@
 import scrapy
+from scrapy.loader import ItemLoader
+from scrapy.loader.processors import TakeFirst
+from coursera.items import CourseraItem
 
 class CourseraSpider(scrapy.Spider):
     # Exemplo de como passar o atributo na linha de comando:
@@ -29,10 +32,38 @@ class CourseraSpider(scrapy.Spider):
         for cat in categories:
             cat_url = cat.xpath('./@href').extract_first()
             self.log('Category: %s' % cat_url)
-            yield scrapy.Request(
-                url='https://www.coursera.org%s' % cat_url,
-                callback=self.parse_category
-            )
+
+            # Forma de adicionar os itens sem usar o ItemLoader.
+            #   - Usar quando não precisar de um processamento nos items.
+
+            # item = CourseraItem()
+            # item['title'] = cat_url
+
+            # yield item
+
+            # Definindo meu ItemLoader.
+            loader = ItemLoader(CourseraItem(), response=response)
+            # Definindo seu output_processor.
+            # TakeFirst(): significa que o item adicionado já está pronto para o pipeline.
+            #   - Se o item adicionado precisar passar por algum outro processamento, definir no arquivo "items.py".
+            loader.default_output_processor = TakeFirst()
+            # Adicionando valores.
+            loader.add_value('url', response.url)
+            loader.add_value('title', cat_url)
+            yield loader.load_item()
+
+            # yield scrapy.Request(
+            #     url='https://www.coursera.org%s' % cat_url,
+            #     callback=self.parse_category
+            # )
+        loader = ItemLoader(CourseraItem(), response=response)
+        loader.default_output_processor = TakeFirst()
+        # Adicionando valores através do xpath.
+        loader.add_xpath(
+            'category', '//div[contains(@class, "slick-slide")]/div/div/a/@href'
+        )
+        # "Retornando" items gerados.
+        yield loader.load_item()
     
     def parse_category(self, response):
         courses = response.xpath('//div[contains(@class, "slick-slide")]/div/div/div/div/a')
@@ -44,6 +75,9 @@ class CourseraSpider(scrapy.Spider):
             )
         
     def parse_course(self, response):
-        yield {
-            'title': response.xpath("//h1/text()").extract_first()
-        }
+        item = CourseraItem()
+        item['title'] = response.xpath("//h1/text()").extract_first()
+        yield item
+        # yield {
+        #     'title': response.xpath("//h1/text()").extract_first()
+        # }

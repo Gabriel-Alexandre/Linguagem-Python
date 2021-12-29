@@ -8,6 +8,6 @@
 from itemadapter import ItemAdapter
 
 
-class CourseraPipeline:
+class UdacityPipeline:
     def process_item(self, item, spider):
-        return 
+        return item
