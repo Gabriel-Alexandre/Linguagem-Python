@@ -66,3 +66,11 @@ DevTools listening on ws://localhost:60893/devtools/browser/41c287de-08e3-4f05-8
 
 ###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
 
+1640826744486	Marionette	INFO	Stopped listening on port 40317
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
