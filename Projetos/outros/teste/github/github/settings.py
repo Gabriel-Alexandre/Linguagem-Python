@@ -1,4 +1,4 @@
-# Scrapy settings for selenium project
+# Scrapy settings for github project
 #
 # For simplicity, this file contains only settings considered important or
 # commonly used. You can find more settings consulting the documentation:
@@ -7,27 +7,27 @@
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = 'selenium'
+BOT_NAME = 'github'
 
-SPIDER_MODULES = ['selenium.spiders']
-NEWSPIDER_MODULE = 'selenium.spiders'
-# CHROME_DRIVER_PATH = 'chromedriver'
+SPIDER_MODULES = ['github.spiders']
+NEWSPIDER_MODULE = 'github.spiders'
+
+
+# Crawl responsibly by identifying yourself (and your website) on the user-agent
+#USER_AGENT = 'github (+http://www.yourdomain.com)'
+
+# Obey robots.txt rules
+ROBOTSTXT_OBEY = True
 
 from shutil import which
 
 SELENIUM_DRIVER_NAME = 'chrome'
-SELENIUM_DRIVER_EXECUTABLE_PATH = which('../../../amb_venv/bin/chromedriver')
+SELENIUM_DRIVER_EXECUTABLE_PATH = which('../../../scrapy_selenium/amb_venv/bin/chromedriver')
 SELENIUM_DRIVER_ARGUMENTS=['--headless']  # '--headless' if using chrome instead of firefox
 
 DOWNLOADER_MIDDLEWARES = {
     'scrapy_selenium.SeleniumMiddleware': 800
 }
-
-# Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'selenium (+http://www.yourdomain.com)'
-
-# Obey robots.txt rules
-ROBOTSTXT_OBEY = True
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
@@ -55,13 +55,13 @@ ROBOTSTXT_OBEY = True
 # Enable or disable spider middlewares
 # See https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 #SPIDER_MIDDLEWARES = {
-#    'selenium.middlewares.SeleniumSpiderMiddleware': 543,
+#    'github.middlewares.GithubSpiderMiddleware': 543,
 #}
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #DOWNLOADER_MIDDLEWARES = {
-#    'selenium.middlewares.SeleniumDownloaderMiddleware': 543,
+#    'github.middlewares.GithubDownloaderMiddleware': 543,
 #}
 
 # Enable or disable extensions
@@ -73,7 +73,7 @@ ROBOTSTXT_OBEY = True
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 #ITEM_PIPELINES = {
-#    'selenium.pipelines.SeleniumPipeline': 300,
+#    'github.pipelines.GithubPipeline': 300,
 #}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
