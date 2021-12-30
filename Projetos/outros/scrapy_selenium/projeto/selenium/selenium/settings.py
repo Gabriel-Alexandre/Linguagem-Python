@@ -11,8 +11,7 @@ BOT_NAME = 'selenium'
 
 SPIDER_MODULES = ['selenium.spiders']
 NEWSPIDER_MODULE = 'selenium.spiders'
-
-
+CHROME_DRIVER_PATH = 'chromedriver'
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'selenium (+http://www.yourdomain.com)'
 
