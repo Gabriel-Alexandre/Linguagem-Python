@@ -19,3 +19,53 @@
 -> c = response.xpath('//div[contains(@class, "rc-DomainNav")]/a')
 # response agr é o resultado de req.
 # Posso fazer para fazer vários testes em diferentes páginas, sem sair do mesmo scrapy shell.
+
+**Ambiente virtual python:**
+
+-> sudo pip install virtualenv (instalando venv) (instalar no pip geral)
+-> python3 -m venv (nome_venv) (criando amb virtual) (No diretório desejado)
+-> source (nome_venv)/bin/activate ) (Ativando ambiente virtual) (Na raiz do amb virtual)
+-> deactivate (Desativando ambiente virtual) (Na raiz do amb virtual)
+
+**Scrapy:**
+
+-> pip install scrapy (ambiente virtual)
+
+**Selenium:**
+
+-> pip install selenium (ambiente virtual)
+-> cd amv_venv/bin
+-> Adicionar webdriver descompactado na raiz da pasta bin
+	- Lembrar de usar versão mais recente.
+	
+**Scrapy-Selenium:**
+
+-> python3 -m venv amb_venv
+-> source amb_venv/bin/activate
+-> pip install scrapy
+-> (Testar se instalação do scrapy deu certo)
+-> pip install scrapy-selenium
+
+-> Adicionar esse código em settings: (Muda de acordo com o navegador)
+
+from shutil import which
+
+SELENIUM_DRIVER_NAME = 'chrome'
+SELENIUM_DRIVER_EXECUTABLE_PATH = which('../../../../scrapy_selenium/amb_venv/bin/chromedriver')
+SELENIUM_DRIVER_ARGUMENTS=['--headless']  # '--headless' if using chrome instead of firefox
+
+DOWNLOADER_MIDDLEWARES = {
+    'scrapy_selenium.SeleniumMiddleware': 800
+}
+
+-> Adicionar esse código no spider: (Usar link abaixo como referência para mais informações)
+
+- link: https://githubhelp.com/clemfromspace/scrapy-selenium
+- obs: Só pegou depois que eu instalei na minha máquina. (mas, o ambiente que eu executo é o virtual, então prestar atenção quanto a isso).
+
+from scrapy_selenium import SeleniumRequest
+start_urls = ['link']
+
+    def parse(self, response):
+        url='link'
+        yield SeleniumRequest(url=url, callback=self.parse_result)
