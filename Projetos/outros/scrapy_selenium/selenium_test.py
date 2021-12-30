@@ -5,6 +5,8 @@ url = 'https://www.busuu.com/pt/hello'
 
 browser = Firefox()
 
+# Tentar fazer pesquisa usando outros comandos.
+
 # Faz requisição para a página.
 browser.get(url)
 # Encontra elemento e pega atributo.
