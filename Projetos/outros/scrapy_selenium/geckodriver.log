@@ -1,0 +1,22 @@
+geckodriver: error: Found argument '--websocket-port' which wasn't expected, or isn't valid in this context
+
+USAGE:
+    geckodriver [FLAGS] [OPTIONS]
+
+For more information try --help
+
+1640823126004	geckodriver	INFO	Listening on 127.0.0.1:49061
+1640823126013	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "38425" "-no-remote" "-profile" "/tmp/rust_mozprofileo8F95r"
+ATTENTION: default value of option mesa_glthread overridden by environment.
+ATTENTION: default value of option mesa_glthread overridden by environment.
+ATTENTION: default value of option mesa_glthread overridden by environment.
+ATTENTION: default value of option mesa_glthread overridden by environment.
+1640823127194	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileo8F95r/search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:38425/devtools/browser/6226fa54-01f4-4f4b-8be1-1257d78e4796
+1640823129430	Marionette	INFO	Listening on port 39995
+1640823129543	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1640823136657	Marionette	INFO	Stopped listening on port 39995
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
