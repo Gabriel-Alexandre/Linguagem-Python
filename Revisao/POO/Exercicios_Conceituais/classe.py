@@ -1,5 +1,16 @@
 from random import randint
 
+# Encapsulamento:
+
+# Sintaxe:
+# Public, Protected, Private. (Outras linguagens).
+
+# Convenção python:
+# _(nome_atributo) -> Privado fraco ("Protected")
+#   - Pode alterar o atributo com _(nome_atributo) = (novo_valor)
+# __(nome_atributo) -> Privado forte ("Private")
+#   - Em caso de tentativa de alteração do atributo, o original pode ser acessado com (_(nome_class)__(nome_atributo))
+
 class Produto:
     # Atributo de classe.
     #   - Todas as classes vão ter o mesmo atributo.
@@ -12,8 +23,8 @@ class Produto:
         # Atributos de instância.
         #   - Cada instância vai ter um atributo diferente.
         #   - Pode ser criado fora da classe.
-        self.nome = nome
-        self.preco = preco
+        self._nome = nome
+        self._preco = preco
 
     # Método de classe. 
     #   - Disponível apenas para a classe.
@@ -41,6 +52,11 @@ class Produto:
     #   - Chamado sempre que o atributo nome for solicitado.
     @property
     def nome(self):
+        # Preciso usar "self._nome", pois "self.nome" representa o setter e getter.
+        #   - Logo, se eu usasse "self.nome", acabaria gerando uma recursão infinita.
+        #   - "self._nome" -> Atributo.
+        #   - "self.nome" -> Getter (.) e Setter (=). (Caso exista as funções getter e setter).
+        #       - Caso não exista as funções, "self.nome" representa o atributo.
         return self._nome
     
     # Método setter.
@@ -49,15 +65,26 @@ class Produto:
     def nome(self, valor):
         self._nome = valor
 
+    # getter -> Precisa sempre seguir a sintaxe de:
+    #   - Decorador.
+    #   - (nome_atributo)(self): return self._(nome_atributo).
+    #   - Quando faço isso o atributo se torna "protected", pois agora ele segue a convenção "_(nome_atributo)".
     @property
     def preco(self):
         return self._preco
     
+    # getter -> Precisa sempre seguir a sintaxe de:
+    #   - Decorador.
+    #   - (nome_atributo)(self, (nome_atributo)): self._(nome_atributo)  = (nome_atributo).
     @preco.setter
     def preco(self, valor):
         if isinstance(valor, str):
             valor = float(valor)
         self._preco = valor
+
+    # Obs: Quando eu crio o getter e setter, toda vez que eu usar "self.(nome_atributo)" e "self.(nome_atributo) =",
+    # estou o usando getter e setter, pois por conveção o valor do atributo vai receber o nome "self._(nome_atributo)"
+    # ou "self.__(nome_atributo)".
 
 # prod1 = Produto('Bola', 50)
 # print(prod1.nome, prod1.preco)
